@@ -1,27 +1,19 @@
+var express = require('express');
+var app = express();
 var MongoClient = require('mongodb').MongoClient;
-MongoClient.connect("mongodb://localhost:27017/Databases",
-// 	{
-// 	db:{ w:1 ,native_parser:false},
-// 	server : {
-// 		poolSize : 5,
-// 		socketOptions : { connectTimeoutMS:500 },
-// 		auto_reconnect : true
-// 	},
-// 	replSet : {},
-// 	mongos : {}
-// 	},
- 	function(err ,db){
-		if(err){
-			console.log("Connect Failed Via Connection String.");
-		}else{
-			console.log("Connected Via Connection String...");
-			db.logout(function(err,result){
-				if(!err){
-					console.log("Logged out Via Connection String...");
-				}
-				db.close();
-				console.log("Connection closed...");
-			})	
-		}
-	});
+
+MongoClient.connect('mongodb://localhost:27017/Databases', function(err, db) {
+  if (err) {
+    throw err;
+  }else{
+  	console.log("succeed");
+  }
+  // db.collection('mammals').find().toArray(function(err, result) {
+  //   if (err) {
+  //     throw err;
+  //   }
+  //   console.log(result);
+  // });
+});
+
 
