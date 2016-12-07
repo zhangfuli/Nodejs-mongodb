@@ -20,7 +20,8 @@ MongoClient.connect('mongodb://localhost:27017/Databases', function(err, db) {
         console.log("New Database Created");
       }
     });
+    //删除数据库
+    //db.db("newDB").dropDatabase(function(err,results){})
   }
 });
-
 
