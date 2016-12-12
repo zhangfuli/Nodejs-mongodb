@@ -31,5 +31,14 @@ MongoClient.connect('mongodb://localhost:27017/' , function (err ,db ){
 		words.find({'first' : 'p'},{limit : 5},function(err ,corsor){
 			displayWords('Limiting 5 Count of words statrting with p', corsor);
 		})
+		//findOne fields限制返回的数据  0 表示排除  1 表示包括
+		words.findOne({'word' : 'the'} , {fields : {charsets: 0}},function(err ,item){
+			console.log("Excludeing fields object:");
+			console.log(JSON.stringify(item,null,2));
+		})
+		words.findOne({'word' : 'the'} , {fields : {word : 1,size : 1,stats: 1}},function(err ,item){
+			console.log("Including fields object:");
+			console.log(JSON.stringify(item,null,2));
+		})
 	}
 });
